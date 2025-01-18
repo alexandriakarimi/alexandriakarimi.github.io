@@ -8,8 +8,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className={`${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} min- transition-colors duration-300`}>
-      <header className="py-8 px-4 bg-opacity-90 backdrop-blur-md z-10 relative">
+    <div className={`${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} min-h-screen transition-colors duration-300`}>
+      <header className={`py-8 px-4 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'} bg-opacity-90 backdrop-blur-md z-10 relative`}>
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center">
             <svg
@@ -19,7 +19,7 @@ const App: React.FC = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M12 2L2 22h20L12 2z"
+                d="M12 2L5 9h2l-3 4h3l-2 4h14l-2-4h3l-3-4h2L12 2z M12 17v5"
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
@@ -28,38 +28,39 @@ const App: React.FC = () => {
             </svg>
             <h1 className="text-2xl font-bold">Alexandria Johnson Karimi, MSW, CSWA</h1>
           </div>
-          <button onClick={toggleDarkMode} className="bg-gray-200 dark:bg-gray-700 p-2 rounded-full focus:outline-none">
-            {isDarkMode ? (
-              <svg
-                className="w-6 h-6"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 18a6 6 0 110-12 6 6 0 010 12zm0-2a4 4 0 100-8 4 4 0 000 8zm-8 7h16a1 1 0 001-1V4a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="w-6 h-6"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 3v1M12 21v1M4.757 4.757l1.414 1.414M18.243 18.243l1.414 1.414M1.586 12.879l1.414-1.414M19.014 11.121l1.414-1.414M12 20h1M12 4h1M4.757 19.243l1.414-1.414M18.243 5.757l1.414-1.414M1.586 11.121l1.414 1.414M19.014 12.879l1.414 1.414"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            )}
+          <button 
+            onClick={toggleDarkMode} 
+            className={`p-2 rounded-full ${
+              isDarkMode ? 'bg-gray-700' : 'bg-gray-200'
+            } focus:outline-none flex items-center justify-center`}
+          >
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+              isDarkMode ? 'bg-gray-800' : 'bg-white'
+            } shadow-md`}>
+              {isDarkMode ? (
+                <svg
+                  className="w-5 h-5 text-yellow-300"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                </svg>
+              ) : (
+                <svg
+                  className="w-5 h-5 text-yellow-500"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              )}
+            </div>
           </button>
         </div>
       </header>
@@ -92,22 +93,23 @@ const App: React.FC = () => {
             </div>
           </div>
         </section>
+        
         <section className="mb-16" id="services">
           <h3 className="text-3xl font-bold text-center mb-8">Services</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg shadow-md transition-transform duration-300 transform hover:scale-105">
+            <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-8 rounded-lg shadow-md transition-transform duration-300 transform hover:scale-105`}>
               <h4 className="text-xl font-bold mb-4">Individual Therapy</h4>
               <p className="text-lg mb-4">
                 Tailored sessions to address personal challenges and promote overall well-being.
               </p>
             </div>
-            <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg shadow-md transition-transform duration-300 transform hover:scale-105">
+            <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-8 rounded-lg shadow-md transition-transform duration-300 transform hover:scale-105`}>
               <h4 className="text-xl font-bold mb-4">Couples Therapy</h4>
               <p className="text-lg mb-4">
                 Collaborative sessions to strengthen relationships and resolve conflicts.
               </p>
             </div>
-            <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg shadow-md transition-transform duration-300 transform hover:scale-105">
+            <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-8 rounded-lg shadow-md transition-transform duration-300 transform hover:scale-105`}>
               <h4 className="text-xl font-bold mb-4">Group Therapy</h4>
               <p className="text-lg mb-4">
                 Supportive group settings for shared learning and growth.
@@ -115,24 +117,29 @@ const App: React.FC = () => {
             </div>
           </div>
         </section>
+
+        
+
         <section className="mb-16" id="testimonials">
           <h3 className="text-3xl font-bold text-center mb-8">Testimonials</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg shadow-md">
+            <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-8 rounded-lg shadow-md`}>
               <p className="text-lg mb-4">
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
               </p>
               <p className="text-gray-600 dark:text-gray-400">- Jane Doe</p>
             </div>
-            <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg shadow-md">
+            <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-8 rounded-lg shadow-md`}>
               <p className="text-lg mb-4">
-              "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
               </p>
               <p className="text-gray-600 dark:text-gray-400">- John Smith</p>
             </div>
           </div>
         </section>
-        <section className="bg-gray-100 dark:bg-gray-800 p-16 text-center rounded-lg shadow-lg mb-16">
+
+
+        <section className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} p-16 text-center rounded-lg shadow-lg mb-16`}>
           <h3 className="text-3xl font-bold mb-8">Contact Me</h3>
           <p className="text-lg mb-8">
             Ready to take the first step towards healing and growth? Contact me today to schedule an appointment.
@@ -144,8 +151,10 @@ const App: React.FC = () => {
             Email Me
           </a>
         </section>
+
+        
       </main>
-      <footer className="bg-gray-200 dark:bg-gray-700 text-center py-8">
+      <footer className={`${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'} text-center py-8`}>
         <p className="text-lg">© 2024 Alexandria Johnson Karimi, MSW, CSWA. All rights reserved.</p>
       </footer>
     </div>
